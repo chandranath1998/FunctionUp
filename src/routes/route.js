@@ -82,7 +82,7 @@ router.get('/movies', function (req, res) {
    }
    Similarly for a request GET /films/9 the response can be something like - ‘No movie exists with this id’  */
      
-    router.get('/films/:filmsid',function(req,res){
+   /* router.get('/films/:filmsid',function(req,res){
         const newFilms = [ {
             id: 1,
             name: "The Shining"
@@ -107,7 +107,76 @@ router.get('/movies', function (req, res) {
         let updateMovies =  objMovies(newFilms);
         
         res.send(updateMovies)  
-    });   
+
+
+
+
+
+    });    */
+    /*Q1.
+   // -write an api which gives the missing number in an array of integers starting from 1….e.g [1,2,3,5,6,7] : 4 is missing
+ // Your route code will look like this
+ app.get("/sol1", function (req, res) {
+	   //logic : sum of numbers is n(n+1)/2..so get sum of all numbers in array. now take sum of numbers till last digit in the array
+	   let arr= [1,2,3,5,6,7]
+	   let missingNumber
+ 
+	   ///LOGIC WILL GO HERE 
+	   res.send(  { data: missingNumber  }  );
+ });
+*/ 
+
+    router.get('/Sol1', function(req,res){
+        let givenArr = [1,2,3,5,6,7];
+        let sum1 = 0;
+        for(let i=0;i<givenArr.length;i++){
+            sum1 += givenArr[i];
+        }
+        //console.log(sum1)
+        let sum2 = 0
+        let lastele = givenArr[givenArr.length -1 ]
+        sum2 = (lastele)*(lastele+1)/2
+        let missingN = sum2 - sum1;
+        
+        res.send({data : missingN})
+     
+    })
+    
+
+
+
+   /* Q2. 
+    // -write an api which gives the missing number in an array of integers starting from anywhere….e.g [33, 34, 35, 37, 38]: 36 is missing
+  // Your route code will look like this
+  app.get("/sol2", function (req, res) {
+            //logic : sum of n consecutive numbers is [ n * (first + last) / 2  ]..so get sum of all numbers in array. now take sum of n consecutive numbers.. n would be length+1 as 1 number is missing
+            let arr= [33, 34, 35, 37, 38]
+            let missingNumber
+  
+            ///LOGIC WILL GO HERE 
+   
+            res.send(  { data: missingNumber  }  );
+  });
+ */
+
+    router.get('/Sol2' , function(req,res){
+
+    let givenArr = [33,34,35,37,38];
+    
+    let sum1 = 0;
+    for(let i=0; i<givenArr.length; i++){
+        sum1 += givenArr[i];
+    }
+    console.log(sum1)
+    let sum2 = 0;
+    let firstele = givenArr[0];
+    let lastele = givenArr[givenArr.length -1 ]
+    sum2 = (givenArr.length+1)*(lastele+firstele)/2;
+    let missingN = sum2 - sum1;
+    console.log(missingN)
+    res.send(missingN)
+    });
+    
     
 
 
