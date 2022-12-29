@@ -9,7 +9,7 @@ const createOrder= async function (req, res) {
 
     if(!appHeader) return res.send({status: false, message:"The mandatory header is not present"})
 
-    console.log("request header is", appHeader)
+    //console.log("request header is", appHeader)
     
     let data= req.body
 
